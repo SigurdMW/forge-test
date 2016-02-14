@@ -10,7 +10,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\Article;
 
-class UserController extends Controller
+class UserController extends AuthenticateController
 {
     /**
      * Display a listing of the resource.

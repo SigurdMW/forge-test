@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 
 use App\Article;
 
-class ArticleController extends Controller
+class ArticleController extends AuthenticateController
 {
     /**
      * Display a listing of the resource.
