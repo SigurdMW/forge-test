@@ -24,6 +24,7 @@
 
                 // Fortell applikasjonen vår at autentiseringen var vellykket
                 console.log("Vellykket autentisering: " + AuthService.authenticationSuccessfull());
+                console.log("Token: " + data);
 
                 // If login is successful, redirect to the users state
                 $state.go('main', {});
