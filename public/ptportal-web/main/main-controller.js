@@ -14,6 +14,7 @@
         vm.error;
 
         vm.getUsers = function() {
+        	console.log("getUser blir kalt");
 
             // This request will hit the index method in the AuthenticateController
             // on the Laravel side and will return the list of users

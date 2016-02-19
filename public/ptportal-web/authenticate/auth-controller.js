@@ -20,11 +20,11 @@
             
             // Use Satellizer's $auth service to login
             $auth.login(credentials).then(function(data) {
-                $rootScope.cred = data;
+                $rootScope.cred = data.data.token;
 
                 // Fortell applikasjonen vår at autentiseringen var vellykket
                 console.log("Vellykket autentisering: " + AuthService.authenticationSuccessfull());
-                console.log(data);
+                console.log(data.data.token);
 
                 // If login is successful, redirect to the users state
                 $state.go('main', {});
