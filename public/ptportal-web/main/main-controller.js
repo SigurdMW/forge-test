@@ -6,7 +6,10 @@
         .module('gltApp')
         .controller('MainCtrl', UserController);  
 
-    function UserController($http) {
+    function UserController($http, $rootScope) {
+
+    	console.log("UserController / MainCtrl aktiveres!!");
+    	console.log(this);
 
         var vm = this;
         
@@ -18,7 +21,7 @@
 
             // This request will hit the index method in the AuthenticateController
             // on the Laravel side and will return the list of users
-            $http.get('api/v1/users').success(function(users) {
+            $http.get('http://188.166.148.21/api/v1/users/'+ $rootScope.cred).success(function(users) {
                 vm.users = users;
             }).error(function(error) {
                 vm.error = error;
