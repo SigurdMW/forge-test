@@ -17,7 +17,7 @@
 
             // This request will hit the index method in the AuthenticateController
             // on the Laravel side and will return the list of users
-            $http.get('http://188.166.148.21/api/v1/users?token='+ $rootScope.cred).success(function(users) {
+            $http.get('http://188.166.148.21/api/v1/users').success(function(users) {
                 $scope.users = users;
             }).error(function(error) {
                 $scope.error = error;
