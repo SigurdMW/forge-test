@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Validator;
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
+//use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\User;
@@ -52,7 +53,19 @@ class UserController extends AuthenticateController
      */
     public function store(Request $request)
     {
-        $this->validate($request, ['name' => 'required', 'email' => 'required','password' => 'required']);
+
+        // look at: https://laracasts.com/discuss/channels/general-discussion/how-to-return-error-code-of-validation-fields-in-rest-api
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|max:255',
+            'email' => 'required|email',
+            'password' => 'required|min:5',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['error' => 'Validation failed.', 'reason' => $validator->errors()], 400);
+        }
+       
         $user = User::create($request->all());
         return $user;
     }
@@ -89,6 +102,16 @@ class UserController extends AuthenticateController
      */
     public function update(Request $request, $id)
     {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|max:255',
+            'email' => 'required|email',
+            'password' => 'required|min:5',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['error' => 'Validation failed.', 'reason' => $validator->errors()], 400);
+        }
+        
         $input = $request->all(); //if other validation $request->all(); could be used
         $user = User::findOrFail($id);
         $user->update($input);
