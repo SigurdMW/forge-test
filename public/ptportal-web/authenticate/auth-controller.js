@@ -23,7 +23,7 @@
                 $rootScope.cred = data;
 
                 // Fortell applikasjonen vår at autentiseringen var vellykket
-                AuthService.authenticationSuccessfull();
+                console.log("Vellykket autentisering: " + AuthService.authenticationSuccessfull());
 
                 // If login is successful, redirect to the users state
                 $state.go('main', {});

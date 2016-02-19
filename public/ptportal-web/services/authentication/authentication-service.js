@@ -7,6 +7,8 @@ angular.module('gltApp').factory('AuthService', [function() {
     
     var authenticationSuccessfull = function(){
         authenticated = true;
+
+        return authenticated;
     }
 
     var isAuthenticated = function(){ 
