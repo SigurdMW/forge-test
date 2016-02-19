@@ -10,8 +10,7 @@ angular.module('gltApp').factory('AuthService', [function() {
             authenticated = true;
 
             return authenticated;
-        }
-
+        },
         isAuthenticated: function(){ 
             return authenticated;
         }
