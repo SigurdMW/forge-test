@@ -33,6 +33,7 @@
 
 <script src="ptportal-web/main/main-controller.js"></script>
 <script src="ptportal-web/authenticate/auth-controller.js"></script>
+<script src="ptportal-web/services/authentication/authentication-service.js"></script>
 
 </body>
 </html>

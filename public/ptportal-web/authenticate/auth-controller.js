@@ -7,7 +7,7 @@
         .controller('AuthController', AuthController);
 
 
-    function AuthController($auth, $state, $rootScope) {
+    function AuthController($auth, $state, $rootScope, AuthService) {
 
         var vm = this;
             
@@ -21,6 +21,9 @@
             // Use Satellizer's $auth service to login
             $auth.login(credentials).then(function(data) {
                 $rootScope.cred = data;
+
+                // Fortell applikasjonen vår at autentiseringen var vellykket
+                AuthService.authenticationSuccessfull();
 
                 // If login is successful, redirect to the users state
                 $state.go('main', {});
