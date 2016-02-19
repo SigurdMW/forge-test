@@ -1,5 +1,9 @@
 <?php
 
+Route::group(['middleware' => ['web']], function(){
+	Route::get('/', 'PagesController@app');
+});
+
 Route::group(['middleware' => ['api'], 'prefix' => 'api/v1'], function () {
 	
 	// JWT Authentication
