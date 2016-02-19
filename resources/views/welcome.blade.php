@@ -32,6 +32,7 @@
 <script src="ptportal-web/app.js"></script>
 
 <script src="ptportal-web/main/main-controller.js"></script>
+<script src="ptportal-web/authenticate/auth-controller.js"></script>
 
 </body>
 </html>

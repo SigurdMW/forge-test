@@ -12,9 +12,14 @@
 
             // Redirect to the auth state if any other states
             // are requested other than users
-            $urlRouterProvider.otherwise('/main');
+            $urlRouterProvider.otherwise('/auth');
             
             $stateProvider
+                .state('auth', {
+                    url: '/auth',
+                    templateUrl: '/authenticate/authView.html',
+                    controller: 'AuthCtrl as auth'
+                })
                 .state('main', {
                     url: '/main',
                     templateUrl: 'main/main.html',
