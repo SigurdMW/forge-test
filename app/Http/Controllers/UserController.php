@@ -52,7 +52,9 @@ class UserController extends AuthenticateController
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, ['name' => 'required', 'email' => 'required','password' => 'required']);
+        $user = User::create($request->all());
+        return $user;
     }
 
     /**
@@ -63,7 +65,8 @@ class UserController extends AuthenticateController
      */
     public function show($id)
     {
-        //
+        $user = User::find($id);
+        return $user;
     }
 
     /**
@@ -86,7 +89,10 @@ class UserController extends AuthenticateController
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->all(); //if other validation $request->all(); could be used
+        $user = User::findOrFail($id);
+        $user->update($input);
+        return $user;
     }
 
     /**
@@ -97,6 +103,8 @@ class UserController extends AuthenticateController
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id)->delete();
+        $message = array('message' => 'User with id $id successfully deleted.');
+        return $message;
     }
 }
