@@ -6,13 +6,13 @@ angular.module('gltApp').factory('AuthService', [function() {
     var authenticated = false;
     
     return {
-        var authenticationSuccessfull = function(){
+        authenticationSuccessfull = function(){
             authenticated = true;
 
             return authenticated;
         }
 
-        var isAuthenticated = function(){ 
+        isAuthenticated = function(){ 
             return authenticated;
         }
     }
