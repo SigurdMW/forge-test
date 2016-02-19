@@ -18,7 +18,7 @@
                 .state('auth', {
                     url: '/auth',
                     templateUrl: 'ptportal-web/authenticate/authView.html',
-                    controller: 'AuthCtrl as auth'
+                    controller: 'AuthController as auth'
                 })
                 .state('main', {
                     url: '/main',
