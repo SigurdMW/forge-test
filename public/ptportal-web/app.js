@@ -17,12 +17,12 @@
             $stateProvider
                 .state('auth', {
                     url: '/auth',
-                    templateUrl: '/authenticate/authView.html',
+                    templateUrl: 'ptportal-web/authenticate/authView.html',
                     controller: 'AuthCtrl as auth'
                 })
                 .state('main', {
                     url: '/main',
-                    templateUrl: 'main/main.html',
+                    templateUrl: 'ptportal-web/main/main.html',
                     controller: 'MainCtrl as main'
                 });
         });
