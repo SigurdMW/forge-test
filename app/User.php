@@ -27,4 +27,18 @@ class User extends Authenticatable
     public function articles(){
         return $this->hasMany('App\Article');
     }
+
+    public static function boot(){
+        parent::boot();
+
+        static::creating(function($user){
+            $user->token = str_random(30);
+        });
+    }
+
+    /* NOT WORKING
+    public function setPasswordAttribute($password){
+        $this->attribute['password'] = bcrypt($password);
+    }
+    */
 }

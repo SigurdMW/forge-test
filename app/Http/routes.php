@@ -5,6 +5,8 @@ Route::group(['middleware' => ['web']], function(){
 	
 	Route::auth();
     Route::get('/home', 'HomeController@index');
+
+    Route::get('register/confirm/{token}','TokenController@confirm');
 });
 
 Route::group(['middleware' => ['api'], 'prefix' => 'api/v1'], function () {
