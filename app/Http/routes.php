@@ -2,6 +2,9 @@
 
 Route::group(['middleware' => ['web']], function(){
 	Route::get('/', 'PagesController@app');
+	
+	Route::auth();
+    Route::get('/home', 'HomeController@index');
 });
 
 Route::group(['middleware' => ['api'], 'prefix' => 'api/v1'], function () {
@@ -13,6 +16,9 @@ Route::group(['middleware' => ['api'], 'prefix' => 'api/v1'], function () {
 
 	// Users
 	Route::resource('users','UserController');
+
+	// Reset password
+	Route::post('resetpassword', 'ResetPasswordController@reset');
 
 	// Articles
 	Route::resource('articles','ArticleController');

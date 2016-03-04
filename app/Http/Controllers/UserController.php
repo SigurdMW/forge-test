@@ -2,17 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use Gate;
 use Validator;
 use Illuminate\Http\Request;
-
-//use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
 use App\User;
 use App\Article;
+use App\Custom\Responses;
 
 class UserController extends AuthenticateController
 {
+
+    protected $apiResponse;
+
+    public function __construct(\Custom\Responses\ApiResponse $apiResponse)
+    {
+       $this->middleware('jwt.auth', ['except' => ['test']]);
+       $this->apiResponse = $apiResponse;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -22,6 +30,12 @@ class UserController extends AuthenticateController
     {
         $users = User::all();
         return $users;
+    }
+
+    public function test()
+    {
+        $users = User::all();
+        return $this->apiResponse->sendResponse(200, "", $users);
     }
 
 
@@ -79,7 +93,13 @@ class UserController extends AuthenticateController
     public function show($id)
     {
         $user = User::find($id);
+        $requestedUser = $user;
+
+        if (Gate::denies('showuser', $requestedUser)){
+            return response()->json(['error' => true, 'message' => 'Not allowed to view resource.'], 401);
+        }
         return $user;
+        
     }
 
     /**

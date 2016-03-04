@@ -166,6 +166,11 @@ return [
          */
         Barryvdh\Cors\ServiceProvider::class,
 
+        /*
+         * Custom Provicer for authentication header
+         */
+        App\Providers\AuthHeaderProvider::class,
+
 
     ],
 
